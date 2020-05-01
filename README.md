@@ -1,6 +1,6 @@
 # Poe
 Poe is a poem editing app that enables our users to post, view, comment, and collect poems by others. 
-<br>
+
 With features that let you tag and view works by genre, generate prompts, find new writers and inspo with a page that pulls random poems by published authors.
 
 <em>Technologies used: </em>Django, Python, embedded HTML((Matererialize//Bootstrap//CSS)), ((img uploader))
