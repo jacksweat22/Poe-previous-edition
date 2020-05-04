@@ -19,6 +19,7 @@
             {% if user.is_authenticated %}
               <li><a href="{% url 'poes_create' %}">Make A Post</a></li>
               <li><a href="{% url 'index' %}">Poes</a></li>
+              <!-- <li>(random poem inspo generator)</li> -->
               <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
             <!-- <li><a href="{% url 'about' %}">Log In</a></li> -->
