@@ -30,7 +30,7 @@ def signup(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect('index') #or 'poems'?
+      return redirect('index') 
     else:
       error_message = 'Invalid sign up - try again'
   form = UserCreationForm()

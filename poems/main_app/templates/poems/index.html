@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>poems index</h1>
 {% for poem in poems %}
 <a href="/poems/{{ poem.id }}">
 <div class="card">
