@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>home</h1>
-<p>login(link) or sign up(link) (disable nav links from showing when user's not logged in)</p>
+<a href="{% url 'login' %}">Log In</a>
+or   
+<a href="{% url 'signup' %}">Sign Up</a>
+to share and view poems 
+
 {% endblock %}

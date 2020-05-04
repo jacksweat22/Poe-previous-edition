@@ -3,7 +3,6 @@ from django.urls import reverse
 from datetime import date
 from django.contrib.auth.models import User
 
-
 class Poem(models.Model):
   title = models.CharField(max_length=100)
   author = models.CharField(max_length=100)
@@ -23,8 +22,9 @@ class Meta:
 
 
 class Comment(models.Model):
-  poem = models.TextField(max_length=200)
+  # poem = models.TextField(max_length=200)
   # user = models.ForeignKey(User, on_delete=models.CASCADE)
+  poem = models.ForeignKey(Poem, on_delete=models.CASCADE)
   text = models.TextField(max_length=250)
 
 
@@ -34,3 +34,4 @@ class Photo(models.Model):
 
   def __str__(self):
     return f"Photo for poem_id: {self.poem_id} @{self.url}"
+
