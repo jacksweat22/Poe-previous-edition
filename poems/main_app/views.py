@@ -71,6 +71,7 @@ def add_comment(request, poem_id):
     new_comment.save()
   return redirect('detail', poem_id=poem_id)
 
+
 class PoeCreate(LoginRequiredMixin, CreateView):
   model = Poem
   fields = ['title', 'poem']   #make author value default to the user that made the post

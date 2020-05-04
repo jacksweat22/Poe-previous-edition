@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if object %}
-<h1>Edit <span><em>{{ object.title }}</em></span></h1>
+<h4>Edit <span><em>{{ object.title }}</em></span></h4>
 <a href="{% url 'detail' poem.id %}">Back</a>
 {% else %}
 <h4>Make A Post</h4>
