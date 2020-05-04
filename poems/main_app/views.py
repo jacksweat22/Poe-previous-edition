@@ -88,3 +88,6 @@ class PoeUpdate(LoginRequiredMixin, UpdateView):
 class PoeDelete(LoginRequiredMixin, DeleteView):
   model = Poem
   success_url = '/poems/'  
+
+def genres(request):
+  return render(request, 'genres.html')  
