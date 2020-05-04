@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>poems index</h1>
+{% for poem in poems %}
+<a href="/poems/{{ poem.id }}">
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">{{ poem.title }}</span>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
