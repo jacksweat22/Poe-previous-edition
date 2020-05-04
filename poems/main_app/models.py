@@ -8,7 +8,7 @@ class Poem(models.Model):
   author = models.CharField(max_length=100)
   poem = models.TextField(max_length=250)
 #   genre = models.Field(dont know the model for genre)
-  # user = models.ForeignKey(User, on_delete=models.CASCADE)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
   # date = models.DateField('Posted Date')
 
   def __str__(self):
