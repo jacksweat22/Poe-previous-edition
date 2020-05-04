@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db import models
 from .models import Poem
+from .forms import CommentForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -45,9 +46,21 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 @login_required
-def poems_detail(request, poem_id):
-  poem = Poem.objects.get(id=poem_id)
-  return render(request, 'poems/detail.html', { 'poem': poem })
+def poems_detail(request, pk):
+  poem = Poem.objects.get(id=pk)
+  comment_form = CommentForm()
+  return render(request, 'poems/detail.html', { 'poem': poem, 'comment_form': comment_form })
+
+@login_required
+def add_comment(request, poem_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    form.instance.user = request.user
+    new_comment = form.save(commit=False)
+    new_comment.poem_id = poem_id
+    new_comment.save() 
+  # return redirect(poem_id=poem_id)
+  return redirect('/poems/1')
 
 class PoeCreate(LoginRequiredMixin, CreateView):
   model = Poem
