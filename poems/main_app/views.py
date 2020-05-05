@@ -10,8 +10,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.models import User
 
-
-
 # Create your views here.
 # from django.http import HttpResponse
 
@@ -46,11 +44,23 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 @login_required
-def poems_detail(request, pk):
-  poem = Poem.objects.get(id=pk)
+# class PoeDetail(LoginRequiredMixin, DetailView):
+#   model = Poem
+def poems_detail(request, poem_id):
+  poem = Poem.objects.get(id=poem_id)
   comment_form = CommentForm()
   return render(request, 'poems/detail.html', { 'poem': poem, 'comment_form': comment_form })
 
+# @login_required
+# def add_comment(request, poem_id):
+#   form = CommentForm(request.POST)
+#   if form.is_valid():
+#     form.instance.user = request.user
+#     new_comment = form.save(commit=False)
+#     new_comment.poem_id = poem_id
+#     new_comment.save() 
+#   # return redirect(poem_id=poem_id)
+#   return redirect('/poems', poem_id=poem_id)
 @login_required
 def add_comment(request, poem_id):
   form = CommentForm(request.POST)
@@ -58,9 +68,9 @@ def add_comment(request, poem_id):
     form.instance.user = request.user
     new_comment = form.save(commit=False)
     new_comment.poem_id = poem_id
-    new_comment.save() 
-  # return redirect(poem_id=poem_id)
-  return redirect('/poems/1')
+    new_comment.save()
+  return redirect('detail', poem_id=poem_id)
+
 
 class PoeCreate(LoginRequiredMixin, CreateView):
   model = Poem
@@ -78,3 +88,6 @@ class PoeUpdate(LoginRequiredMixin, UpdateView):
 class PoeDelete(LoginRequiredMixin, DeleteView):
   model = Poem
   success_url = '/poems/'  
+
+def genres(request):
+  return render(request, 'genres.html')  
