@@ -13,4 +13,5 @@ urlpatterns = [
  path('index/<int:pk>/update/', views.PoeUpdate.as_view(), name='poes_update'),
  path('index/<int:pk>/delete', views.PoeDelete.as_view(), name='poes_delete'),
  path('genres/', views.genres, name='genres'),
+ path('poems/<int:poem_id>/add_photo/', views.add_photo, name='add_photo'),
 ]
