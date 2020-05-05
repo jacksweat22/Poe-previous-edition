@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
+
 <div>
   <span><em>{{ poem.title }}</em></span>
   <p>By: {{request.user.username}}</p>
